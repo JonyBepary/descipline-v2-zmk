@@ -61,4 +61,3 @@
               <&gpio0 9 GPIO_ACTIVE_HIGH>;  // Col 14 - P0.09
     };
 };
-};

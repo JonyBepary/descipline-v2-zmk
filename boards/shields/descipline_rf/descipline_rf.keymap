@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 The ZMK Contributors
+ * Copyright (c) 2021 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
  */
@@ -8,7 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-
 
 / {
     behaviors {
@@ -33,62 +32,53 @@
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-            // ------------------------------------------------------------------------------------------
-            // | ESC | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 0  | -  | =  | BSPC | DEL |
-            // | TAB | Q  | W  | E  | R  | T  | Y  | U  | I  | O  | P  | [  | ]  |  \   | PGUP|
-            // | CAPS| A  | S  | D  | F  | G  | H  | J  | K  | L  | ;  | '  |ENTER|      | PGDN|
-            // |LSHFT| Z  | X  | C  | V  | B  | N  | M  | ,  | .  | /  |RSHFT|RSHFT| UP  | MOD |
-            // |LCTRL|LCTRL|LGUI|LALT|    |    |    |SPACE|   |RALT| FN |RCTRL|LEFT |DOWN |RIGHT|
-
+            // Full layout (15×5) based on the provided documentation
             bindings = <
-                &kp ESC    &kp N1      &kp N2     &kp N3     &kp N4     &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS  &kp EQUAL  &kp BSPC   &kp DEL
-                &kp TAB    &kp Q       &kp W      &kp E      &kp R      &kp T       &kp Y       &kp U      &kp I       &kp O       &kp P       &kp LBKT   &kp RBKT   &kp BSLH   &kp PG_UP
-                &kp CAPS   &kp A       &kp S      &kp D      &kp F      &kp G       &kp H       &kp J      &kp K       &kp L       &kp SEMI    &kp SQT    &kp ENTER  &none      &kp PG_DN
-                &kp LSHFT  &kp Z       &kp X      &kp C      &kp V      &kp B       &kp N       &kp M      &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT  &kp RSHFT  &kp UP     &mo 4
-                &kp LCTRL  &kp LCTRL   &kp LGUI   &kp LALT   &none      &none       &kp SPACE   &none      &none       &kp RALT    &mo 1       &kp RCTRL  &kp LEFT   &kp DOWN   &kp RIGHT
+                &kp ESC    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS   &kp EQUAL   &kp BSPC    &kp DEL
+                &kp TAB    &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &kp LBKT    &kp RBKT    &kp BSLH    &kp PG_UP
+                &kp CAPS   &kp A       &kp S       &kp D       &kp F       &kp G       &kp H       &kp J       &kp K       &kp L       &kp SEMI    &kp SQT     &kp ENTER   &none       &kp PG_DN
+                &kp LSHFT  &kp Z       &kp X       &kp C       &kp V       &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT   &kp RSHFT   &kp UP      &mo 4
+                &kp LCTRL  &kp LCTRL   &kp LGUI    &kp LALT    &none       &none       &kp SPACE   &none       &none       &kp RALT    &mo 1       &kp RCTRL   &kp LEFT    &kp DOWN    &kp RIGHT
             >;
         };
         lower_layer {
-            // Function layer / FN
+            // Function keys, media controls, etc.
             bindings = <
-                &kp GRAVE  &kp F1      &kp F2     &kp F3     &kp F4     &kp F5      &kp F6      &kp F7     &kp F8      &kp F9      &kp F10     &kp F11    &kp F12    &kp DEL    &kp INS
-                &trans     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &none &none    &kp PSCRN  &kp SLCK    &kp PAUSE_BREAK &none   &kp PSCRN  &none      &trans     &kp HOME
-                &trans     &kp MUTE    &kp C_VOL_DN &kp C_VOL_UP &kp C_PP &none   &none       &none      &none       &none       &none       &none      &trans     &none      &kp END
-                &trans     &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &trans     &trans     &kp C_BRI_UP &mo 2
-                &trans     &trans      &trans     &trans     &none      &none       &trans      &none      &none       &trans      &trans      &trans     &kp C_PREV &kp C_BRI_DN &kp C_NEXT
+                &trans     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12     &kp DEL     &kp PRINTSCREEN
+                &trans     &kp HOME    &kp UP      &kp END     &kp PG_UP   &kp INS     &trans      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS   &kp EQUAL   &trans      &trans
+                &trans     &kp LEFT    &kp DOWN    &kp RIGHT   &kp PG_DN   &kp DEL     &trans      &kp N4      &kp N5      &kp N6      &kp DOT     &kp COMMA   &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &kp N0      &kp N1      &kp N2      &kp N3      &kp BSLH    &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &mo 2       &mo 3       &trans
             >;
         };
-
         raise_layer {
-            // Additional function layer
+            // Symbols and special characters
             bindings = <
-                &bt BT_CLR &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &bootloader &sys_reset
-                &none      &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
-                &none      &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
-                &none      &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &trans
-                &none      &none       &none      &none      &none      &none       &none       &none      &none       &none       &trans      &none      &none      &none      &none
+                &trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &kp UNDER   &kp PLUS    &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp LBRC    &kp RBRC    &kp PIPE    &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp COLON   &kp DQT     &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp LT      &kp GT      &kp QMARK   &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
             >;
         };
-
         adjust_layer {
-            // Mouse and additional functions
+            // System adjustments, Bluetooth, etc.
             bindings = <
-                &out OUT_TOG &none     &none      &none      &none      &none       &none       &kp KP_N7  &kp KP_N8   &kp KP_N9   &kp KP_MINUS &none      &none      &none      &none
-                &none        &none     &none      &none      &none      &none       &none       &kp KP_N4  &kp KP_N5   &kp KP_N6   &kp KP_PLUS  &none      &none      &none      &none
-                &none        &none     &none      &none      &none      &none       &none       &kp KP_N1  &kp KP_N2   &kp KP_N3   &kp KP_MULTIPLY &none   &none      &none      &none
-                &none        &none     &none      &none      &none      &none       &none       &kp KP_N0  &kp KP_DOT  &kp KP_EQUAL &kp KP_DIVIDE &none    &none      &none      &none
-                &none        &none     &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
+                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12     &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &bootloader &reset      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
             >;
         };
-
-        bluetooth_layer {
-            // Kept for compatibility, combined with FN layer functionality
+        mod_layer {
+            // Additional custom layer
             bindings = <
-                &bt BT_CLR  &none      &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
-                &none      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &none &none      &none      &none       &none       &none       &none      &none      &none      &none
-                &none      &none       &none      &none      &none      &out OUT_USB &out OUT_BLE &none    &none       &none       &none       &none      &none      &none      &none
-                &none      &none       &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
-                &bootloader &none      &none      &none      &none      &none       &none       &none      &none       &none       &none       &none      &none      &none      &none
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
             >;
         };
     };

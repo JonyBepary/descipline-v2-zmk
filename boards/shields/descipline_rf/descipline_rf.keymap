@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+
 / {
     behaviors {
         ht_tp: homerow_mods {
@@ -32,53 +33,80 @@
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-            // Full layout (15×5) based on the provided documentation
+
+            // ------------------------------------------------------------------------------------------
+            // |  ESC  |  1   |  2   |  3   |  4   |  5   |   6   |  7    |  8   |  9   |   0   | BSPC  |
+            // |  TAB  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   |  \    |
+            // | CTRL  |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   | ENTER |
+            // | SHIFT |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
+            // |ADJUST | LCTL | LALT | LGUI | LOWR | SPACE| SPACE |  RAIS | LARW | DARW | UARW  | RARW  |
+
+
             bindings = <
-                &kp ESC    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS   &kp EQUAL   &kp BSPC    &kp DEL
-                &kp TAB    &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &kp LBKT    &kp RBKT    &kp BSLH    &kp PG_UP
-                &kp CAPS   &kp A       &kp S       &kp D       &kp F       &kp G       &kp H       &kp J       &kp K       &kp L       &kp SEMI    &kp SQT     &kp ENTER   &none       &kp PG_DN
-                &kp LSHFT  &kp Z       &kp X       &kp C       &kp V       &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp RSHFT   &kp RSHFT   &kp UP      &mo 4
-                &kp LCTRL  &kp LCTRL   &kp LGUI    &kp LALT    &none       &none       &kp SPACE   &none       &none       &kp RALT    &mo 1       &kp RCTRL   &kp LEFT    &kp DOWN    &kp RIGHT
+                &kp ESC    &kp X        &kp V       &kp L    &kp C      &kp W       &kp K       &kp H   &kp G       &kp F       &kp Q       &kp MINUS
+                &kp TAB    &kp U        &kp I       &kp A    &kp E      &kp O       &kp S       &kp N   &kp R       &kp T       &kp D       &kp Z
+                &kp LSHFT  &kp LBKT     &kp SEMI    &kp SQT  &kp P      &kp Y       &kp B       &kp M   &kp COMMA   &kp DOT     &kp J       &kp RSHIFT
+                &kp LCTRL  &kp LGUI     &kp LALT    &mo 2    &mo 1      &kp SPACE   &kp SPACE   &mo 3   &mo 4      &none    &none  &kp RCTRL
             >;
         };
         lower_layer {
-            // Function keys, media controls, etc.
+            // -------------------------------------------------------------------------------------------
+
+            // |  ESC  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7  |  F8   |  F9  | F10  |  F11  |  F12  |
+            // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |  *   |  (   |   )   |  DEL  |
+            // |       |  F1  |  F2  |  F3  |  F4  |  F5  |   F6  |   _   |  +   |  {   |   }   |   |   |
+            // |       |  F7  |  F8  |  F9  |  F10 |  F11 |   F12 | LS(#) |LS(|) |      |       |       |
+            // |       |      |      |      |      |      |       |       | NEXT | Vol- | Vol+ | PLAY   |
             bindings = <
-                &trans     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12     &kp DEL     &kp PRINTSCREEN
-                &trans     &kp HOME    &kp UP      &kp END     &kp PG_UP   &kp INS     &trans      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS   &kp EQUAL   &trans      &trans
-                &trans     &kp LEFT    &kp DOWN    &kp RIGHT   &kp PG_DN   &kp DEL     &trans      &kp N4      &kp N5      &kp N6      &kp DOT     &kp COMMA   &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &kp N0      &kp N1      &kp N2      &kp N3      &kp BSLH    &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &mo 2       &mo 3       &trans
+                &trans    &kp PG_UP &kp BSPC &kp UP   &kp DEL   &kp PG_DN    &trans       &kp N7    &kp N8  &kp N9     &kp 0         &kp BSPC
+                &trans    &kp HOME  &kp LEFT &kp DOWN &kp RIGHT &kp END      &trans       &kp N4    &kp N5  &kp N6     &kp DOT       &trans
+                &kp LSHFT &trans    &kp TAB  &trans   &kp ENTER &kp PRINTSCREEN &kp N0       &kp N1    &kp N2  &kp N3     &kp COMMA     &trans
+                &kp LCTRL &trans    &trans    &trans   &trans    &kp SPACE       &kp SPACE    &trans &trans  &trans    &trans        &trans
             >;
         };
+
         raise_layer {
-            // Symbols and special characters
+            // ------------------------------------------------------------------------------------------
+            // |  ESC  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7   |  F8   |  F9  | F10  |  F11  |  F12  |
+            // |   ~   |  1   |  2   |  3   |  4   |  5   |  6    |   7   |  8   |  9   |   0   |  DEL  |
+            // |  DEL  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6   |   -   |  =   |  [   |   ]   |   \   |
+            // |       |  F7  |  F8  |  F9  |  F10 |  F11 |  F12  |   #   |  |   |      |       |       |
+            // |       |      |      |      |      |      |       |       |       |      |      |       |
             bindings = <
-                &trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &kp UNDER   &kp PLUS    &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp LBRC    &kp RBRC    &kp PIPE    &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp COLON   &kp DQT     &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &kp LT      &kp GT      &kp QMARK   &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+               &kp TAB   &kp LC(LA(E))   &kp QMARK  &kp RA(N8)      &kp RA(N9)         &kp GRAVE  &kp EXCL  &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp RPAR   &kp CARET    &kp LS(N3)
+                &kp DEL   &kp LC(LA(MINUS))  &kp AMPS   &kp RA(N7)      &kp RA(N0)         &kp LS(RBRC)  &kp UNDER &kp ASTRK       &kp LS(N9)            &kp FSLH   &kp GT       &kp LC(LA(Q))
+                &trans    &kp NON_US_HASH &kp DOLLAR &kp RA(NON_US_BSLH) &kp RA(RBKT)    &none    &kp RBKT  &kp PRCNT       &kp AT              &kp PIPE   &kp LT       &kp TILDE
+                &trans    &trans          &trans     &trans              &trans                 &kp SPACE &kp SPACE &trans          &trans              &trans     &trans       &trans
             >;
         };
+
         adjust_layer {
-            // System adjustments, Bluetooth, etc.
+            // ------------------------------------------------------------------------------------------
+            // |tog(4)|  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |    F12    |
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |LALT(PRTSN)|
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |   PRTSN   |
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |LCTRL(DEL) |
+            // |      |      |      |      |      |BOOTLD|BOOTLD|      |      |      |      |           |
             bindings = <
-                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11     &kp F12     &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &bootloader &reset      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &none &none &kp LC(BSPC)        &kp LC(LS(UP))      &kp LC(DEL)         &none               &none           &kp F7  &kp F8  &kp F9 &kp F12  &kp F12
+                &none &kp LS(HOME) &kp LC(LS(LEFT))    &kp LC(LS(DOWN))    &kp LC(LS(RIGHT))   &kp LS(END)	&none           &kp F4  &kp F5  &kp F6 &kp F11  &kp PSCRN
+                &none &none &none               &kp LA(NON_US_HASH) &kp LC(LS(X))       &none               &none          &kp F1  &kp F2  &kp F3 &none    &none
+                &none &none &none               &none               &none               &kp SPACE           &trans          &trans  &trans  &trans &trans   &trans
             >;
         };
-        mod_layer {
-            // Additional custom layer
+
+        bluetooth_layer {
+            // ------------------------------------------------------------------------------------------
+            // |tog(4)|  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |    F12    |
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |LALT(PRTSN)|
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |   PRTSN   |
+            // |      |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |LCTRL(DEL) |
+            // |      |      |      |      |      |BOOTLD|BOOTLD|      |      |      |      |           |
             bindings = <
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                &bt BT_CLR &none &none &none &none &none &none &kp F7 &kp F8 &kp F9 &kp F12 &kp F12
+                &trans &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &none  &none  &kp F4  &kp F5  &kp F6   &kp F11   &kp PSCRN
+                &trans &none  &none  &none  &none  &none  &none  &kp F1  &kp F2  &kp F3   &kp F10   &kp LC(DEL)
+                &bootloader &trans &trans &trans &trans &kp SPACE   &trans &trans &trans &trans &trans  &trans
             >;
         };
     };

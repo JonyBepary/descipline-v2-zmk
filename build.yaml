@@ -20,6 +20,4 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: zodiark_left
-  - board: nice_nano_v2
-    shield: zodiark_right
+    shield: descipline_rf

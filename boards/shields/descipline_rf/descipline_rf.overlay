@@ -1,22 +1,17 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include "descipline_rf-layouts.dtsi"
 
-&physical_layout0
-{
+&physical_layout0 {
     transform = <&matrix_transform>;
 };
 
-/
-{
-    chosen
-    {
-        zmk, kscan = &kscan0;
-        zmk, physical - layout = &physical_layout0;
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,physical-layout = &physical_layout0;
     };
 
-matrix_transform:
-    keymap_transform_0
-    {
+    matrix_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <15>;
         rows = <5>;
@@ -27,20 +22,18 @@ matrix_transform:
                         RC(3, 0) RC(3, 1) RC(3, 2) RC(3, 3) RC(3, 4) RC(3, 5) RC(3, 6) RC(3, 7) RC(3, 8) RC(3, 9) RC(3, 10) RC(3, 11)>;
     };
 
-kscan0:
-    kscan
-    {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
 
-        diode - direction = "col2row";
-        row - gpios = <&gpio0 22(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row0 - D4 (P0.22)
-            , <&gpio1 2(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row1 - D12 (P1.02)
-            , <&gpio0 8(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row2 - D0 (P0.08)
-            , <&gpio1 0(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row3 - D6 (P1.00)
-            , <&gpio0 24(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>         // Row4 - D5 (P0.24)
+        diode-direction = "col2row";
+        row-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row0 - D4 (P0.22)
+            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row1 - D12 (P1.02)
+            , <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row2 - D0 (P0.08)
+            , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>          // Row3 - D6 (P1.00)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>         // Row4 - D5 (P0.24)
             ;
-        col - gpios = <&gpio1 7 GPIO_ACTIVE_HIGH> // Col0 - D13 (P1.07)
+        col-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH> // Col0 - D13 (P1.07)
             , <&gpio0 20 GPIO_ACTIVE_HIGH>        // Col1 - D3 (P0.20)
             , <&gpio0 6 GPIO_ACTIVE_HIGH>         // Col2 - D1 (P0.06)
             , <&gpio1 1 GPIO_ACTIVE_HIGH>         // Col3 - D11 (P1.01)

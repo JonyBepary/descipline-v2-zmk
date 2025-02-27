@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2021 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define DEFAULT 0
+#define FN 1
+#define BT 2
+
+
+/ {
+    behaviors {
+        ht_tp: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
+    };
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            // ------------------------------------------------------------------------------------------
+            // | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  | BKSP | DEL  |
+            // | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |  \  | PGUP |
+            // | CAPS  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  | ENTER |    | PGDN |
+            // | LSHIFT |     |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | RSHIFT| UP | MOD |
+            // | LCTRL | LCTRL | LGUI | LALT |     |     | SPACE |     |     | RALT | FN | RCTRL | LEFT | DOWN | RIGHT |
+
+            bindings = <
+                &kp ESC    &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL &kp BSPC &kp DEL
+                &kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp BSLH &kp PG_UP
+                &kp CAPS   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT  &kp ENTER          &kp PG_DN
+                &kp LSHFT          &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP &kp K_CMENU
+                &kp LCTRL  &kp LCTRL &kp LGUI &kp LALT               &kp SPACE                &kp RALT &mo FN &kp RCTRL &kp LEFT &kp DOWN &kp RIGHT
+            >;
+        };
+       fn_layer {
+            // Function layer - you may want to customize this based on your needs
+            bindings = <
+                &kp GRAVE  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE &kp INS
+                &trans     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans  &trans  &trans  &trans &kp HOME
+                &trans     &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans  &trans  &trans          &kp END
+                &trans            &trans &trans &trans &trans &trans &trans &trans &trans &trans  &trans  &trans  &kp C_VOL_UP &mo BT
+                &trans     &trans &trans &trans                &trans                &trans &trans &trans  &kp C_PREV &kp C_VOL_DN &kp C_NEXT
+            >;
+        };
+        bluetooth_layer {
+            // Bluetooth layer for device switching and reset
+            bindings = <
+                &bt BT_CLR &none &none &none &none &none &none &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &trans &trans
+                &trans &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0 &none &none &kp F4 &kp F5 &kp F6 &kp F11 &kp PSCRN &trans &trans &trans
+                &trans &none &none &none &none &none &none &kp F1 &kp F2 &kp F3 &kp F10 &kp LC(DEL) &trans &trans
+                &bootloader        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans                &kp SPACE                &trans &trans &trans &trans &trans &trans
+            >;
+        };
+    };
+};

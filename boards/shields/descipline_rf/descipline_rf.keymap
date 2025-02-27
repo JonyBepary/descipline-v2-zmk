@@ -95,7 +95,7 @@
                 &kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT     &kp BSLH   &kp PG_UP
                 &td_caps   &ht_tp LCTRL A  &ht_tp LALT S  &ht_tp LGUI D  &ht_tp LSHFT F  &kp G  &kp H  &ht_tp RSHFT J  &ht_tp RGUI K  &ht_tp RALT L  &ht_tp RCTRL SEMI &kp SQT    &kp RETURN  &kp PG_DN
                 &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP     &lt_mod NAV K_CMENU
-                &kp LCTRL  &kp LGUI &kp LALT &lt_mod SYM SPACE               &lt_mod MEDIA SPACE       &kp RALT &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
+                &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_mod SYM SPACE               &lt_mod MEDIA SPACE       &kp RALT &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
             >;
         };
         

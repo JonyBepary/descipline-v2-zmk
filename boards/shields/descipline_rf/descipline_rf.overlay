@@ -5,6 +5,7 @@
     transform = <&matrix_transform>;
 };
 
+
 / {
     chosen {
         zmk,kscan = &kscan0;
@@ -15,49 +16,44 @@
         compatible = "zmk,matrix-transform";
         columns = <15>;
         rows = <5>;
-
-        // | ESC | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = | BKSPC | DEL |
-        // | TAB | Q | W | E | R | T | Y | U | I | O | P | [ | ] | \ | PGUP |
-        // | CAPS | A | S | D | F | G | H | J | K | L | ; | ' | ENTER | | PGDN |
-        // | LSHIFT | Z | X | C | V | B | N | M | , | . | / | RSHIFT | RSHIFT | UP | MOD |
-        // | LCTRL | LCTRL | LGUI | LALT | | | SPACE | | | RALT | FN | RCTRL | LEFT | DOWN | RGHT |
         map = <
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) RC(0,12) RC(0,13) RC(0,14)
             RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) RC(1,12) RC(1,13) RC(1,14)
             RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11) RC(2,12)          RC(2,14)
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(3,12) RC(3,13) RC(3,14)
-            RC(4,0) RC(4,1) RC(4,2) RC(4,3)                 RC(4,6)                 RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13) RC(4,14)
+            RC(3,0)         RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(3,12) RC(3,13) RC(3,14)
+            RC(4,0) RC(4,1) RC(4,2)                         RC(4,6)                 RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13) RC(4,14)
         >;
     };
+RC(4,3)
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
 
-        // Define the 5 rows according to your pin mapping
         row-gpios
-            = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // Row 0 - P0.22
-              <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // Row 1 - P1.02
-              <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // Row 2 - P0.08
-              <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // Row 3 - P1.00
-              <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Row 4 - P0.24
+            = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // D4 (P0.22) / row0
+            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // D12 (P1.02) / row1
+            , <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // D0 (P0.08) / row2
+            , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // D6 (P1.00) / row3
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // D5 (P0.24) / row4
+            ;
 
-        // Define the 15 columns according to your pin mapping
         col-gpios
-            = <&gpio1 7 GPIO_ACTIVE_HIGH>,  // Col 0 - P1.07
-              <&gpio0 20 GPIO_ACTIVE_HIGH>, // Col 1 - P0.20
-              <&gpio0 6 GPIO_ACTIVE_HIGH>,  // Col 2 - P0.06
-              <&gpio1 1 GPIO_ACTIVE_HIGH>,  // Col 3 - P1.01
-              <&gpio0 11 GPIO_ACTIVE_HIGH>, // Col 4 - P0.11
-              <&gpio1 4 GPIO_ACTIVE_HIGH>,  // Col 5 - P1.04
-              <&gpio1 6 GPIO_ACTIVE_HIGH>,  // Col 6 - P1.06
-              <&gpio0 31 GPIO_ACTIVE_HIGH>, // Col 7 - P0.31
-              <&gpio0 29 GPIO_ACTIVE_HIGH>, // Col 8 - P0.29
-              <&gpio0 2 GPIO_ACTIVE_HIGH>,  // Col 9 - P0.02
-              <&gpio1 15 GPIO_ACTIVE_HIGH>, // Col 10 - P1.15
-              <&gpio1 13 GPIO_ACTIVE_HIGH>, // Col 11 - P1.13
-              <&gpio1 11 GPIO_ACTIVE_HIGH>, // Col 12 - P1.11
-              <&gpio0 10 GPIO_ACTIVE_HIGH>, // Col 13 - P0.10
-              <&gpio0 9 GPIO_ACTIVE_HIGH>;  // Col 14 - P0.09
+            = <&gpio1 7 GPIO_ACTIVE_HIGH>   // D13 (P1.07) / col0
+            , <&gpio0 20 GPIO_ACTIVE_HIGH>  // D3 (P0.20) / col1
+            , <&gpio0 6 GPIO_ACTIVE_HIGH>   // D1 (P0.06) / Col2
+            , <&gpio1 1 GPIO_ACTIVE_HIGH>   // D11 (P1.01) / col3
+            , <&gpio0 11 GPIO_ACTIVE_HIGH>  // D7 (P0.11) / col4
+            , <&gpio1 4 GPIO_ACTIVE_HIGH>   // D8 (P1.04) / col5
+            , <&gpio1 6 GPIO_ACTIVE_HIGH>   // D9 (P1.06) / col6
+            , <&gpio0 31 GPIO_ACTIVE_HIGH>  // D21 (P0.31) / col7
+            , <&gpio0 29 GPIO_ACTIVE_HIGH>  // D20 (P0.29) / col8
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>   // D19 (P0.02) / col9
+            , <&gpio1 15 GPIO_ACTIVE_HIGH>  // D18 (P1.15) / col10
+            , <&gpio1 13 GPIO_ACTIVE_HIGH>  // D15 (P1.13) / col11
+            , <&gpio1 11 GPIO_ACTIVE_HIGH>  // D14 (P1.11) / col12
+            , <&gpio0 10 GPIO_ACTIVE_HIGH>  // D16 (P0.10) / col13
+            , <&gpio0 9 GPIO_ACTIVE_HIGH>   // D10 (P0.09) / col14
+            ;
     };
 };

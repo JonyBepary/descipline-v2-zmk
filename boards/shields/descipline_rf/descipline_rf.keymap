@@ -93,9 +93,9 @@
             bindings = <
                 &combo_esc    &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL    &kp BSPC   &kp DEL
                 &kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT     &kp BSLH   &kp PG_UP
-                &td_caps   &ht_tp LCTRL A  &ht_tp LALT S  &ht_tp LGUI D  &ht_tp LSHFT F  &kp G  &kp H  &ht_tp RSHFT J  &ht_tp RGUI K  &ht_tp RALT L  &ht_tp RCTRL SEMI &kp SQT    &kp RETURN  &kp PG_DN
+                &td_caps   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT    &kp RETURN  &kp PG_DN
                 &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP     &lt_mod NAV K_CMENU
-                &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_mod SYM SPACE        &none &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
+                &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_mod MEDIA SPACE        &RALT &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
 
             >;
         };
@@ -106,7 +106,7 @@
                 &kp GRAVE  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp C_MUTE &kp INS
                 &trans     &trans &kp UP &trans &trans &trans &trans &trans &kp INS &kp HOME &kp PG_UP  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &kp HOME
                 &trans     &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans &trans &kp DEL &kp END &kp PG_DN  &trans  &trans          &kp END
-                &trans     &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans &trans &email_macro &save_macro &trans  &trans  &trans  &kp C_VOL_UP &mo BT
+                &trans     &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans &trans &macro_tap email_macro &macro_tap save_macro &trans  &trans  &trans  &kp C_VOL_UP &mo BT
                 &trans     &trans &trans &trans                &trans                &trans &trans &trans  &kp C_PREV &kp C_VOL_DN &kp C_NEXT
             >;
         };
@@ -114,7 +114,7 @@
         nav_layer {
             // Navigation layer for cursor control and text editing
             bindings = <
-                &trans  &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp DEL &trans
+                &trans  &trans &trans &kp DEL &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp DEL &trans
                 &trans     &kp HOME &kp UP &kp END &kp PG_UP &trans &trans &kp HOME &kp UP &kp END &kp PG_UP  &trans  &trans  &trans &trans
                 &trans     &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &trans &trans &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN  &trans  &trans          &trans
                 &trans     &trans &kp LC(X) &kp LC(C) &kp LC(V) &trans &trans &trans &trans &trans  &trans  &trans  &trans &trans

@@ -18,16 +18,30 @@
 
 / {
     behaviors {
-        ht_tp: homerow_mods {
+        // Home row modifiers with optimized timing for ergonomics
+        hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
             quick-tap-ms = <125>;
-            flavor = "tap-preferred";
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
 
+        // Layer-tap for thumb keys with space
+        lt_spc: layer_tap_space {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_SPACE";
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <125>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
+        };
+
+        // Legacy behavior for compatibility
         lt_mod: layer_tap_with_modifier {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_MOD";
@@ -87,15 +101,15 @@
             // ------------------------------------------------------------------------------------------
             // | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  | BKSP | DEL  |
             // | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |  \  | PGUP |
-            // | CAPS  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  | ENTER |    | PGDN |
+            // | CAPS |A/CTRL|S/ALT|D/GUI|F/SHFT| G  |  H  |J/SHFT|K/GUI|L/ALT|;/CTRL| '  | ENTER |    | PGDN |
             // | LSHIFT |     |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | RSHIFT| UP | MOD |
-            // | LCTRL | LGUI | LALT |     |      | SPACE |&lt_mod MEDIA SPACE|     | RALT | FN | RCTRL | LEFT | DOWN | RIGHT |
+            // | LCTRL | LGUI | LALT |     |   SYM/SPACE   |    NAV/SPACE    |     | RALT | FN | RCTRL | LEFT | DOWN | RIGHT |
             bindings = <
                 &combo_esc    &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL    &kp BSPC   &kp DEL
                 &kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT     &kp BSLH   &kp PG_UP
-                &td_caps   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT    &kp RETURN  &kp PG_DN
-                &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP     &lt_mod NAV K_CMENU
-                &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_mod SYM SPACE        &kp RALT &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
+                &td_caps   &hm LCTRL A  &hm LALT S  &hm LGUI D  &hm LSHFT F  &kp G  &kp H  &hm RSHFT J  &hm RGUI K  &hm RALT L  &hm RCTRL SEMI &kp SQT    &kp RETURN  &kp PG_DN
+                &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP     &lt_mod MEDIA K_CMENU
+                &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_spc SYM SPACE        &lt_spc NAV SPACE &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
 
             >;
         };
@@ -112,12 +126,13 @@
         };
 
         nav_layer {
-            // Navigation layer for cursor control and text editing
+            // Navigation layer - optimized with HJKL arrow keys and logical grouping
+            // Arrow keys in HJKL positions, page up/down, home/end, cut/copy/paste
             bindings = <
                 &trans  &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp DEL &trans
-                &trans     &kp HOME &kp UP &kp END &kp PG_UP &trans &trans &kp HOME &kp UP &kp END &kp PG_UP  &trans  &trans  &trans &trans
-                &trans     &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &trans &trans &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN  &trans  &trans          &trans
-                &trans     &trans &kp LC(X) &kp LC(C) &kp LC(V) &trans &trans &trans &trans &trans  &trans  &trans  &trans &trans
+                &trans     &trans &trans &kp LC(Z) &kp LC(Y) &trans &trans &kp HOME &kp PG_UP &kp END &trans  &trans  &trans  &trans &trans
+                &trans     &trans &trans &trans &trans &trans &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans  &trans  &trans          &trans
+                &trans     &trans &kp LC(X) &kp LC(C) &kp LC(V) &trans &trans &trans &kp PG_DN &trans  &trans  &trans  &trans &trans
                 &trans     &trans &trans &trans                &kp SPACE                &trans &trans &trans  &trans &trans &trans
             >;
         };
@@ -145,13 +160,14 @@
         };
 
         sym_layer {
-            // Symbol layer for easy access to symbols
+            // Symbol layer - numbers on home row (QWERTY positions), logical symbol grouping
+            // Numbers 1-0 on QWERTYUIOP row for easy access
             bindings = <
                 &kp GRAVE  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &kp UNDER &kp PLUS &trans &trans
-                &trans     &kp TILDE &kp PIPE &kp LBRC &kp RBRC &trans &trans &kp LBRC &kp RBRC &kp PIPE &kp TILDE  &trans  &trans  &trans &trans
-                &trans     &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR  &trans  &trans          &trans
-                &trans     &trans &trans &trans &trans &trans &trans &trans &trans &trans  &trans  &trans  &trans &trans
-                &trans     &trans &trans &trans                &trans                &trans &trans &trans  &trans &trans &trans
+                &trans     &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0  &kp LBKT  &kp RBKT  &kp BSLH &trans
+                &trans     &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR  &kp SQT  &trans          &trans
+                &trans     &kp TILDE &kp PIPE &kp LBRC &kp RBRC &trans &trans &kp UNDER &kp PLUS &kp MINUS &kp EQUAL  &trans  &trans &trans
+                &trans     &trans &trans &trans                &trans                &kp SPACE &trans &trans  &trans &trans &trans
             >;
         };
     };

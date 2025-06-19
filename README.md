@@ -395,6 +395,27 @@ The keyboard uses a 5x15 matrix with COL2ROW diode direction.
 | 2   | D12   | P1.02 | Row 1 |
 | 3   | D13   | P1.07 | Col 0 |
 
+
+### Wiring Guide
+
+For detailed wiring instructions and connection diagrams, refer to the comprehensive wiring guide:
+
+📄 **[Wiring Guide PDF](docs/wiring_guide.pdf)**
+
+This guide includes:
+- **Step-by-step wiring instructions** for connecting the Nice!Nano v2 to the Discipline V2 PCB
+- **Visual connection diagrams** showing pin-to-pin mappings
+- **Troubleshooting tips** for common wiring issues
+- **Quality assurance checklist** to verify proper connections
+- **Safety guidelines** for handling electronic components
+
+**Key Wiring Points**:
+- Ensure proper orientation of the Nice!Nano v2 controller
+- Double-check all pin connections against the pin configuration table
+- Test continuity before final assembly
+- Follow anti-static procedures when handling components
+
+
 ## Build Instructions
 
 ### Prerequisites

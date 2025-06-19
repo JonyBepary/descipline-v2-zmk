@@ -28,7 +28,7 @@ ZMK-v2 is a modern, feature-rich firmware for the Descipline V2 keyboard that pr
 - **6 Specialized Layers**: Default QWERTY, Function, Navigation, Media, Bluetooth, and Symbol layers
 - **Clean Home Row Typing**: Pure letter input without interference from modifiers
 - **Thumb-Based Layer Access**: Efficient layer switching without leaving home position
-- **Enhanced Utility Organization**: Comprehensive function clustering with intuitive arrow diamond pattern
+- **Enhanced Utility Organization**: Comprehensive function clustering with intuitive IJKL arrow diamond pattern
 - **Clean F-Key Access**: Uncluttered left side for direct function key usage
 - **Logical Grouping Strategy**: Navigation, system, and productivity utilities clustered for workflow efficiency
 - **Wireless Connectivity**: Bluetooth with multi-device support
@@ -89,9 +89,9 @@ Enhanced function layer with logical utility organization - clean F-key focus on
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
 │  `  │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │   DEL    │ INS │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
-│        │     │     │     │     │     │     │     │HOME │ UP  │PGUP │PSCRN│SCLK │ PAUSE │EMAIL│
+│        │     │     │     │     │     │     │     │ UP  │HOME │PGUP │PSCRN│SCLK │ PAUSE │EMAIL│
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│          │     │     │     │     │     │     │     │LEFT │DOWN │RGHT │ DEL │    END    │SAVE │
+│          │     │     │     │     │     │     │LEFT │DOWN │RGHT │ DEL │ END │    END    │SAVE │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
 │          │C_PRV │C_PP  │C_NXT│     │     │     │     │PGDN │     │     │     │  VOL+   │  BT │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
@@ -107,7 +107,7 @@ Enhanced function layer with logical utility organization - clean F-key focus on
 - **Media Controls**: Previous/Play-Pause/Next positioned on the left for media management
 
 **Right Side - Logical Utility Grouping**:
-- **Arrow Diamond Cluster**: UP, LEFT, DOWN, RIGHT in intuitive diamond pattern for directional navigation
+- **Arrow Diamond Cluster**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) in intuitive diamond formation for directional navigation
 - **Navigation Utilities**: HOME, DELETE, PAGE UP, PAGE DOWN, INSERT strategically positioned
 - **System Utilities**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped together for system functions
 - **Productivity Keys**: EMAIL and SAVE macros positioned for quick access
@@ -121,15 +121,15 @@ Enhanced function layer with logical utility organization - clean F-key focus on
 
 ### Layer 2: NAV (Navigation & Text Editing)
 
-Optimized navigation with HJKL arrow keys and text editing shortcuts.
+Optimized navigation with IJKL arrow keys and text editing shortcuts.
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
 │     │     │     │     │     │     │     │     │     │     │     │     │     │   DEL    │     │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
-│        │     │     │UNDO │REDO │     │     │HOME │PGUP │ END │     │     │     │       │     │
+│        │     │     │UNDO │REDO │     │     │HOME │ UP  │ END │     │     │     │       │     │
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│          │     │     │     │     │     │LEFT │DOWN │ UP  │RGHT │     │     │           │     │
+│          │     │     │     │     │     │     │LEFT │DOWN │RGHT │     │     │           │     │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
 │          │      │ CUT  │COPY │PASTE│     │     │     │PGDN │     │     │     │         │     │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
@@ -138,7 +138,7 @@ Optimized navigation with HJKL arrow keys and text editing shortcuts.
 ```
 
 **Navigation Features**:
-- **HJKL**: Vi-style arrow keys (H=Left, J=Down, K=Up, L=Right)
+- **IJKL**: IJKL arrow keys (I=Up, J=Left, K=Down, L=Right)
 - **Home/End/PgUp/PgDn**: Strategic positioning for easy access
 - **Undo/Redo**: Ctrl+Z/Ctrl+Y for quick text editing
 - **Cut/Copy/Paste**: Standard editing shortcuts
@@ -237,14 +237,14 @@ The keymap features enhanced logical grouping and clustering of functions across
 **FN Layer - Comprehensive Utility Organization**:
 - **Clean Left Focus**: F-keys positioned without utility interference for direct access
 - **Right-Side Clustering**: All utilities logically grouped together for improved muscle memory
-- **Arrow Diamond Pattern**: UP, LEFT, DOWN, RIGHT arranged in intuitive diamond formation
+- **Arrow Diamond Pattern**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) arranged in intuitive diamond formation
 - **Function Clusters**: Navigation utilities (HOME, DELETE, PAGE UP/DOWN, INSERT) grouped together
 - **System Clusters**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped for system functions
 - **Productivity Access**: EMAIL and SAVE macros strategically positioned for workflow efficiency
 
 **Cross-Layer Consistency**:
 - **Symbol Layer**: Numbers on home row with logical symbol grouping for programming efficiency
-- **NAV Layer**: HJKL arrow keys with strategic text editing shortcuts
+- **NAV Layer**: IJKL arrow keys with strategic text editing shortcuts
 - **Specialized Layers**: Dedicated media controls and Bluetooth management
 
 **Ergonomic Benefits**:
@@ -257,7 +257,7 @@ The keymap features enhanced logical grouping and clustering of functions across
 The enhanced FN layer organization follows intuitive grouping principles:
 
 **Arrow Key Diamond Pattern**:
-- **Natural Formation**: UP, LEFT, DOWN, RIGHT positioned in diamond shape matching directional logic
+- **Natural Formation**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) positioned in diamond shape matching directional logic
 - **Muscle Memory**: Intuitive finger positioning mirrors physical directional movement
 - **Quick Access**: Clustered together for rapid directional navigation without hand repositioning
 

@@ -1,6 +1,6 @@
 # ZMK-v2 Firmware for Descipline V2 Keyboard
 
-A comprehensive ZMK (Zephyr Mechanical Keyboard) firmware implementation for the Descipline V2 65% keyboard, featuring advanced ergonomic optimizations, home row modifiers, and intelligent layer management.
+A comprehensive ZMK (Zephyr Mechanical Keyboard) firmware implementation for the Descipline V2 65% keyboard, featuring advanced ergonomic optimizations, clean typing experience, and intelligent layer management.
 
 ## Table of Contents
 
@@ -8,6 +8,10 @@ A comprehensive ZMK (Zephyr Mechanical Keyboard) firmware implementation for the
 - [Hardware Specifications](#hardware-specifications)
 - [Keymap Layers](#keymap-layers)
 - [Ergonomic Features](#ergonomic-features)
+  - [Clean Home Row Typing](#clean-home-row-typing)
+  - [Thumb-Based Layer Access](#thumb-based-layer-access)
+  - [Clean Typing Experience](#clean-typing-experience)
+  - [Advanced Behaviors](#advanced-behaviors)
 - [Pin Configuration](#pin-configuration)
 - [Build Instructions](#build-instructions)
 - [Flash Instructions](#flash-instructions)
@@ -17,13 +21,16 @@ A comprehensive ZMK (Zephyr Mechanical Keyboard) firmware implementation for the
 
 ## Project Overview
 
-ZMK-v2 is a modern, feature-rich firmware for the Descipline V2 keyboard that prioritizes ergonomics and efficiency. Built on the ZMK firmware framework, it provides wireless connectivity, advanced key behaviors, and a carefully designed layer system optimized for programming and productivity workflows.
+ZMK-v2 is a modern, feature-rich firmware for the Descipline V2 keyboard that prioritizes clean typing and ergonomic efficiency. Built on the ZMK firmware framework, it provides wireless connectivity, advanced key behaviors, and a carefully designed layer system optimized for programming and productivity workflows with uninterrupted home row typing.
 
 ### Key Features
 
 - **6 Specialized Layers**: Default QWERTY, Function, Navigation, Media, Bluetooth, and Symbol layers
-- **Home Row Modifiers**: Ergonomic modifier placement reducing finger stretching
+- **Clean Home Row Typing**: Pure letter input without interference from modifiers
 - **Thumb-Based Layer Access**: Efficient layer switching without leaving home position
+- **Enhanced Utility Organization**: Comprehensive function clustering with intuitive arrow diamond pattern
+- **Clean F-Key Access**: Uncluttered left side for direct function key usage
+- **Logical Grouping Strategy**: Navigation, system, and productivity utilities clustered for workflow efficiency
 - **Wireless Connectivity**: Bluetooth with multi-device support
 - **Advanced Behaviors**: Tap-dance, sticky keys, and custom macros
 - **Optimized Symbol Layout**: Logical grouping of symbols and numbers
@@ -53,7 +60,7 @@ The firmware implements 6 carefully designed layers, each optimized for specific
 
 ### Layer 0: DEFAULT (QWERTY Base Layer)
 
-The foundation layer with home row modifiers for ergonomic typing.
+The foundation layer with clean home row keys for uninterrupted typing.
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
@@ -61,41 +68,56 @@ The foundation layer with home row modifiers for ergonomic typing.
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
 │  TAB   │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  [  │  ]  │   \   │PGUP │
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│CAPS/FN   │A/CTL│S/ALT│D/GUI│F/SHF│  G  │  H  │J/SHF│K/GUI│L/ALT│;/CTL│  '  │   ENTER   │PGDN │
+│CAPS/FN   │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │   ENTER   │PGDN │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
-│  LSHIFT  │   Z  │  X   │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │RSHFT│   UP    │ MOD │
+│  LSHIFT  │  Z   │  X   │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │RSHFT│   UP    │ MOD │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
-│LCTL│ LGUI │LALT│         │       SYM/SPACE             │NAV/SPC │  FN  │RCTL│LEFT │DOWN │RGHT │
+│LCTL│ LGUI │LGUI│  LALT   │       SYM/SPACE             │NAV/SPC │  FN  │RCTL│LEFT │DOWN │RGHT │
 └────┴──────┴────┴─────────┴─────────────────────────────┴────────┴──────┴────┴─────┴─────┴─────┘
 ```
 
-**Home Row Modifiers**:
-- **A**: Control (hold) / A (tap)
-- **S**: Alt (hold) / S (tap)
-- **D**: GUI/Super (hold) / D (tap)
-- **F**: Shift (hold) / F (tap)
-- **J**: Shift (hold) / J (tap)
-- **K**: GUI/Super (hold) / K (tap)
-- **L**: Alt (hold) / L (tap)
-- **;**: Control (hold) / ; (tap)
+**Clean Home Row Keys**:
+- **A, S, D, F**: Pure letter input without modifier interference
+- **J, K, L, ;**: Pure letter input without modifier interference
+- **Modifiers**: Located in traditional positions (Ctrl, Alt, GUI, Shift)
 
-### Layer 1: FN (Function Keys & System Controls)
+### Layer 1: FN (Function Keys & Utility Controls)
 
-Function keys, navigation arrows, and system controls.
+Enhanced function layer with logical utility organization - clean F-key focus on the left, comprehensive utility grouping on the right.
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
 │  `  │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │   DEL    │ INS │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
-│        │     │ UP  │     │     │     │     │     │ INS │HOME │PGUP │PSCRN│SCLK │ PAUSE │HOME │
+│        │     │     │     │     │     │     │     │HOME │ UP  │PGUP │PSCRN│SCLK │ PAUSE │EMAIL│
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│          │LEFT │DOWN │RGHT │     │     │     │     │ DEL │END  │PGDN │     │           │END  │
+│          │     │     │     │     │     │     │     │LEFT │DOWN │RGHT │ DEL │    END    │SAVE │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
-│          │C_PRV │C_PP  │C_NXT│     │     │     │EMAIL│SAVE │     │     │     │  VOL+   │  BT │
+│          │C_PRV │C_PP  │C_NXT│     │     │     │     │PGDN │     │     │     │  VOL+   │  BT │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
 │    │      │    │         │                             │        │      │    │PREV │VOL- │NEXT │
 └────┴──────┴────┴─────────┴─────────────────────────────┴────────┴──────┴────┴─────┴─────┴─────┘
 ```
+
+**Enhanced FN Layer Organization**:
+
+**Left Side - Clean F-Key Focus**:
+- **Function Keys**: F1-F12 positioned cleanly across the top for unobstructed access
+- **Transparent Positions**: Clean layout without utility clutter for focused F-key usage
+- **Media Controls**: Previous/Play-Pause/Next positioned on the left for media management
+
+**Right Side - Logical Utility Grouping**:
+- **Arrow Diamond Cluster**: UP, LEFT, DOWN, RIGHT in intuitive diamond pattern for directional navigation
+- **Navigation Utilities**: HOME, DELETE, PAGE UP, PAGE DOWN, INSERT strategically positioned
+- **System Utilities**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped together for system functions
+- **Productivity Keys**: EMAIL and SAVE macros positioned for quick access
+- **Layer Access**: Bluetooth layer activation for wireless management
+
+**Grouping Logic Benefits**:
+- **Intuitive Navigation**: Arrow keys form natural diamond pattern for muscle memory
+- **Function Clustering**: Similar utilities grouped together for improved workflow efficiency
+- **Clean Separation**: F-keys isolated from utilities to prevent accidental activation
+- **Ergonomic Access**: High-use utilities positioned for comfortable thumb and finger reach
 
 ### Layer 2: NAV (Navigation & Text Editing)
 
@@ -105,7 +127,7 @@ Optimized navigation with HJKL arrow keys and text editing shortcuts.
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
 │     │     │     │     │     │     │     │     │     │     │     │     │     │   DEL    │     │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
-│        │     │     │UNDO │REDO │     │     │HOME │PGUP │END  │     │     │     │       │     │
+│        │     │     │UNDO │REDO │     │     │HOME │PGUP │ END │     │     │     │       │     │
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
 │          │     │     │     │     │     │LEFT │DOWN │ UP  │RGHT │     │     │           │     │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
@@ -133,7 +155,7 @@ Media playback and volume controls.
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
 │          │     │     │     │     │     │     │     │     │     │     │     │           │     │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
-│          │ MUTE │VOL-  │VOL+ │     │     │     │     │     │     │     │     │         │     │
+│          │ MUTE │ VOL- │VOL+ │     │     │     │     │     │     │     │     │         │     │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
 │    │      │    │         │                             │        │      │    │PREV │PLAY │NEXT │
 └────┴──────┴────┴─────────┴─────────────────────────────┴────────┴──────┴────┴─────┴─────┴─────┘
@@ -191,14 +213,14 @@ Optimized symbol and number layout for programming and mathematical input.
 
 ## Ergonomic Features
 
-### Home Row Modifiers
+### Clean Home Row Typing
 
-Home row modifiers reduce finger stretching and improve typing ergonomics:
+The home row keys provide a clean, uninterrupted typing experience:
 
-- **Left Hand**: Ctrl(A), Alt(S), GUI(D), Shift(F)
-- **Right Hand**: Shift(J), GUI(K), Alt(L), Ctrl(;)
-- **Timing**: 175ms tapping term with 125ms quick-tap
-- **Idle Requirement**: 150ms prior idle to prevent accidental activation
+- **Pure Letter Input**: A, S, D, F, J, K, L, ; keys provide direct letter input without hold-tap behavior
+- **No Modifier Interference**: Home row keys respond instantly without timing delays
+- **Traditional Modifiers**: Ctrl, Alt, GUI, and Shift remain in their standard positions
+- **Comfortable Typing**: No accidental modifier activation during fast typing
 
 ### Thumb-Based Layer Access
 
@@ -208,7 +230,66 @@ Efficient layer switching using thumb keys:
 - **Right Thumb**: Navigation layer activation with space fallback
 - **Balanced Hold-Tap**: 175ms timing optimized for natural typing rhythm
 
+### Intelligent Layer Organization
+
+The keymap features enhanced logical grouping and clustering of functions across layers:
+
+**FN Layer - Comprehensive Utility Organization**:
+- **Clean Left Focus**: F-keys positioned without utility interference for direct access
+- **Right-Side Clustering**: All utilities logically grouped together for improved muscle memory
+- **Arrow Diamond Pattern**: UP, LEFT, DOWN, RIGHT arranged in intuitive diamond formation
+- **Function Clusters**: Navigation utilities (HOME, DELETE, PAGE UP/DOWN, INSERT) grouped together
+- **System Clusters**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped for system functions
+- **Productivity Access**: EMAIL and SAVE macros strategically positioned for workflow efficiency
+
+**Cross-Layer Consistency**:
+- **Symbol Layer**: Numbers on home row with logical symbol grouping for programming efficiency
+- **NAV Layer**: HJKL arrow keys with strategic text editing shortcuts
+- **Specialized Layers**: Dedicated media controls and Bluetooth management
+
+**Ergonomic Benefits**:
+- **Reduced Cognitive Load**: Similar functions clustered together reduce mental mapping
+- **Improved Muscle Memory**: Consistent grouping patterns across similar functions
+- **Efficient Workflows**: Logical positioning minimizes hand movement and finger travel
+
+### FN Layer Grouping Logic
+
+The enhanced FN layer organization follows intuitive grouping principles:
+
+**Arrow Key Diamond Pattern**:
+- **Natural Formation**: UP, LEFT, DOWN, RIGHT positioned in diamond shape matching directional logic
+- **Muscle Memory**: Intuitive finger positioning mirrors physical directional movement
+- **Quick Access**: Clustered together for rapid directional navigation without hand repositioning
+
+**Utility Clustering Strategy**:
+- **Navigation Group**: HOME, DELETE, PAGE UP/DOWN, INSERT positioned together for document navigation
+- **System Group**: PRINT SCREEN, SCROLL LOCK, PAUSE clustered for system-level functions
+- **Productivity Group**: EMAIL and SAVE macros strategically placed for workflow efficiency
+- **Clean Separation**: F-keys isolated on left side to prevent accidental utility activation
+
+**Ergonomic Advantages**:
+- **Reduced Hand Movement**: Similar functions within comfortable finger reach
+- **Improved Efficiency**: Logical grouping reduces time spent searching for functions
+- **Enhanced Muscle Memory**: Consistent clustering patterns accelerate learning and usage
+- **Workflow Optimization**: Related functions positioned to support common task sequences
+
+### Clean Typing Experience
+
+The keymap prioritizes a pure typing experience with enhanced organizational benefits:
+
+- **Immediate Response**: Home row keys (A, S, D, F, J, K, L, ;) provide instant letter input
+- **No Timing Delays**: Zero latency on home row letter keys for fast, fluid typing
+- **Reduced Complexity**: Eliminates potential conflicts between letters and modifiers
+- **Traditional Layout**: Modifiers remain in familiar positions for muscle memory
+- **Enhanced Function Access**: Logical clustering improves utility access without disrupting typing flow
+- **Workflow Integration**: Strategic function grouping supports seamless transitions between typing and navigation
+
 ### Advanced Behaviors
+
+#### Layer-Tap for Thumb Keys
+- **Left Thumb**: Symbol layer access with space fallback
+- **Right Thumb**: Navigation layer access with space fallback
+- **Optimized Timing**: 175ms hold threshold with 125ms quick-tap for natural typing rhythm
 
 #### Tap-Dance Capabilities
 - **CAPS Key**: Single tap for FN layer, double tap for CAPS LOCK
@@ -443,17 +524,7 @@ west build -d build/descipline_rf -b nice_nano_v2 -- -DSHIELD=descipline_rf
 2. Verify matrix transform matches physical layout
 3. Reset to bootloader and reflash firmware
 
-#### 3. Home Row Modifiers Too Sensitive
-
-**Issue**: Modifiers activating during normal typing
-
-**Solution**: Adjust timing in keymap:
-```c
-tapping-term-ms = <200>;        // Increase from 175
-require-prior-idle-ms = <200>;  // Increase from 150
-```
-
-#### 4. Bluetooth Connection Issues
+#### 3. Bluetooth Connection Issues
 
 **Issue**: Cannot connect or frequent disconnections
 
@@ -462,7 +533,7 @@ require-prior-idle-ms = <200>;  // Increase from 150
 2. Reset keyboard: Access BT layer → RESET
 3. Re-pair device from scratch
 
-#### 5. Layer Switching Problems
+#### 4. Layer Switching Problems
 
 **Issue**: Layers not activating correctly
 
@@ -493,12 +564,20 @@ To restore default settings:
 
 Edit behavior parameters in [`descipline_rf.keymap`](boards/shields/descipline_rf/descipline_rf.keymap):
 
+**Layer-Tap Behavior for Thumb Keys**:
 ```c
-hm: homerow_mods {
-    tapping-term-ms = <175>;      // Hold threshold
-    quick-tap-ms = <125>;         // Quick tap threshold
-    require-prior-idle-ms = <150>; // Prevent false triggers
+lt_spc: layer_tap_space {
+    tapping-term-ms = <175>;      // Hold threshold for layer access
+    quick-tap-ms = <125>;         // Quick tap threshold for space
     flavor = "balanced";          // Timing behavior
+};
+```
+
+**Tap-Dance for CAPS/FN Key**:
+```c
+td_caps: tap_dance_caps {
+    tapping-term-ms = <200>;      // Double-tap timing
+    bindings = <&mo FN>, <&kp CAPS>;  // Single tap = FN layer, double tap = CAPS
 };
 ```
 
@@ -577,4 +656,4 @@ For issues and questions:
 
 ---
 
-**Note**: This documentation is for ZMK-v2 firmware specifically designed for the Descipline V2 keyboard with Nice!Nano v2 or nrf promicro controller. For other keyboards or controllers, configuration details may differ.
+**Note**: This documentation is for ZMK-v2 firmware specifically designed for the Descipline V2 keyboard with Nice!Nano v2 or nrf promicro controller. This implementation prioritizes clean home row typing without modifiers for an uninterrupted typing experience. For other keyboards or controllers, configuration details may differ.

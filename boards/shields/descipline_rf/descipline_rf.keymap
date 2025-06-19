@@ -18,18 +18,6 @@
 
 / {
     behaviors {
-        // Home row modifiers with optimized timing for ergonomics
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            quick-tap-ms = <125>;
-            require-prior-idle-ms = <150>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-        };
-
         // Layer-tap for thumb keys with space
         lt_spc: layer_tap_space {
             compatible = "zmk,behavior-hold-tap";
@@ -101,13 +89,13 @@
             // ------------------------------------------------------------------------------------------
             // | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  | BKSP | DEL  |
             // | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |  \  | PGUP |
-            // | CAPS |A/CTRL|S/ALT|D/GUI|F/SHFT| G  |  H  |J/SHFT|K/GUI|L/ALT|;/CTRL| '  | ENTER |    | PGDN |
+            // | CAPS |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  | ENTER |    | PGDN |
             // | LSHIFT |     |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | RSHIFT| UP | MOD |
             // | LCTRL | LGUI | LALT |     |   SYM/SPACE   |    NAV/SPACE    |     | RALT | FN | RCTRL | LEFT | DOWN | RIGHT |
             bindings = <
                 &combo_esc    &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL    &kp BSPC   &kp DEL
                 &kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT     &kp BSLH   &kp PG_UP
-                &td_caps   &hm LCTRL A  &hm LALT S  &hm LGUI D  &hm LSHFT F  &kp G  &kp H  &hm RSHFT J  &hm RGUI K  &hm RALT L  &hm RCTRL SEMI &kp SQT    &kp RETURN  &kp PG_DN
+                &td_caps   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT    &kp RETURN  &kp PG_DN
                 &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT &kp UP     &lt_mod MEDIA K_CMENU
                 &kp LCTRL  &kp LGUI &kp LGUI  &kp LALT      &lt_spc SYM SPACE        &lt_spc NAV SPACE &mo FN &kp RCTRL &kp LEFT  &kp DOWN   &kp RIGHT
 
@@ -115,12 +103,21 @@
         };
 
         fn_layer {
-            // Function layer - expanded with more functionality
+            // Enhanced Function layer with comprehensive utility organization
+            // Left side: Clean F-key focus with transparent positions for unobstructed access
+            // Right side: Logical clustering of all utilities for improved workflow efficiency
+            //
+            // Utility Grouping Strategy:
+            // - Arrow Diamond: UP, LEFT, DOWN, RIGHT in intuitive diamond formation
+            // - Navigation Cluster: HOME, DELETE, PAGE UP/DOWN, INSERT for document navigation
+            // - System Cluster: PRINT SCREEN, SCROLL LOCK, PAUSE for system functions
+            // - Productivity Cluster: EMAIL, SAVE macros for workflow optimization
+            // - Media Controls: Previous/Play-Pause/Next positioned on left for media management
             bindings = <
                 &kp GRAVE  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp DEL &kp INS
-                &trans     &trans &kp UP &trans &trans &trans &trans &trans &kp INS &kp HOME &kp PG_UP  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &kp HOME
-                &trans     &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans &trans &kp DEL &kp END &kp PG_DN  &trans  &trans          &kp END
-                &trans     &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans &trans &email_macro &save_macro &trans  &trans  &trans  &kp C_VOL_UP &mo BT
+                &trans     &trans &trans &trans &trans &trans &trans &trans &kp HOME &kp UP &kp PG_UP  &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &email_macro
+                &trans     &trans &trans &trans &trans &trans &trans &trans &kp LEFT &kp DOWN &kp RIGHT  &kp DEL  &kp END          &save_macro
+                &trans     &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans &trans &trans &kp PG_DN &trans  &trans  &trans  &kp C_VOL_UP &mo BT
                 &trans     &trans &trans &trans                &trans                &trans &trans &trans  &kp C_PREV &kp C_VOL_DN &kp C_NEXT
             >;
         };

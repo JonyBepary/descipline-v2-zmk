@@ -28,7 +28,7 @@ ZMK-v2 is a modern, feature-rich firmware for the Descipline V2 keyboard that pr
 - **6 Specialized Layers**: Default QWERTY, Function, Navigation, Media, Bluetooth, and Symbol layers
 - **Clean Home Row Typing**: Pure letter input without interference from modifiers
 - **Thumb-Based Layer Access**: Efficient layer switching without leaving home position
-- **Enhanced Utility Organization**: Comprehensive function clustering with intuitive IJKL arrow diamond pattern
+- **Enhanced Utility Organization**: Comprehensive function clustering with dual arrow key access patterns
 - **Clean F-Key Access**: Uncluttered left side for direct function key usage
 - **Logical Grouping Strategy**: Navigation, system, and productivity utilities clustered for workflow efficiency
 - **Wireless Connectivity**: Bluetooth with multi-device support
@@ -64,13 +64,13 @@ The foundation layer with clean home row keys for uninterrupted typing.
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
-│ ESC │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │   BKSP   │ DEL │
+│ESC* │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │   BKSP   │ DEL │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
 │  TAB   │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  [  │  ]  │   \   │PGUP │
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│CAPS/FN   │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │   ENTER   │PGDN │
+│CAPS**    │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │   ENTER   │PGDN │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
-│  LSHIFT  │  Z   │  X   │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │RSHFT│   UP    │ MOD │
+│  LSHIFT  │  Z   │  X   │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │RSHFT│   UP    │MOD* │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
 │LCTL│ LGUI │LGUI│  LALT   │       SYM/SPACE             │NAV/SPC │  FN  │RCTL│LEFT │DOWN │RGHT │
 └────┴──────┴────┴─────────┴─────────────────────────────┴────────┴──────┴────┴─────┴─────┴─────┘
@@ -81,6 +81,11 @@ The foundation layer with clean home row keys for uninterrupted typing.
 - **J, K, L, ;**: Pure letter input without modifier interference
 - **Modifiers**: Located in traditional positions (Ctrl, Alt, GUI, Shift)
 
+**Advanced Behaviors**:
+- **ESC* (combo_esc)**: ESC normally, GRAVE when LALT is held (mod-morph behavior)
+- **CAPS** (td_caps)**: Single tap activates FN layer, double tap activates CAPS LOCK (tap-dance behavior)
+- **MOD* (lt_mod)**: Hold for MEDIA layer access (layer-tap behavior)
+
 ### Layer 1: FN (Function Keys & Utility Controls)
 
 Enhanced function layer with logical utility organization - clean F-key focus on the left, comprehensive utility grouping on the right.
@@ -89,9 +94,9 @@ Enhanced function layer with logical utility organization - clean F-key focus on
 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┬─────┐
 │  `  │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │   DEL    │ INS │
 ├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┼─────┤
-│        │     │     │     │     │     │     │     │ UP  │HOME │PGUP │PSCRN│SCLK │ PAUSE │EMAIL│
+│        │     │ UP  │     │     │     │     │     │ UP  │HOME │PGUP │PSCRN│SCLK │ PAUSE │EMAIL│
 ├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴───────┼─────┤
-│          │     │     │     │     │     │     │LEFT │DOWN │RGHT │ DEL │ END │    END    │SAVE │
+│          │LEFT │DOWN │RGHT │     │     │     │LEFT │DOWN │RGHT │ DEL │ END │   ENTER   │SAVE │
 ├──────────┼─────┴┬────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬─────────┬─────┤
 │          │C_PRV │C_PP  │C_NXT│     │     │     │     │PGDN │     │     │     │  VOL+   │  BT │
 ├────┬─────┴┬────┬┴─────┴──┬──┴─────┴─────┴─────┴─────┴──┬──┴─────┼─────┴┬────┬─────┬─────┬─────┤
@@ -107,14 +112,14 @@ Enhanced function layer with logical utility organization - clean F-key focus on
 - **Media Controls**: Previous/Play-Pause/Next positioned on the left for media management
 
 **Right Side - Logical Utility Grouping**:
-- **Arrow Diamond Cluster**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) in intuitive diamond formation for directional navigation
+- **Arrow Key Navigation**: UP at W position, LEFT/DOWN/RIGHT at A/S/D positions on left side, and UP/LEFT/DOWN/RIGHT at I/J/K/L positions on right side for dual navigation access
 - **Navigation Utilities**: HOME, DELETE, PAGE UP, PAGE DOWN, INSERT strategically positioned
 - **System Utilities**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped together for system functions
 - **Productivity Keys**: EMAIL and SAVE macros positioned for quick access
 - **Layer Access**: Bluetooth layer activation for wireless management
 
 **Grouping Logic Benefits**:
-- **Intuitive Navigation**: Arrow keys form natural diamond pattern for muscle memory
+- **Dual Arrow Access**: Arrow keys available in both left (WASD-style) and right (IJKL-style) positions for flexible navigation
 - **Function Clustering**: Similar utilities grouped together for improved workflow efficiency
 - **Clean Separation**: F-keys isolated from utilities to prevent accidental activation
 - **Ergonomic Access**: High-use utilities positioned for comfortable thumb and finger reach
@@ -138,7 +143,7 @@ Optimized navigation with IJKL arrow keys and text editing shortcuts.
 ```
 
 **Navigation Features**:
-- **IJKL**: IJKL arrow keys (I=Up, J=Left, K=Down, L=Right)
+- **IJKL Arrow Keys**: I=Up, J=Left, K=Down, L=Right positioned for comfortable navigation
 - **Home/End/PgUp/PgDn**: Strategic positioning for easy access
 - **Undo/Redo**: Ctrl+Z/Ctrl+Y for quick text editing
 - **Cut/Copy/Paste**: Standard editing shortcuts
@@ -237,14 +242,14 @@ The keymap features enhanced logical grouping and clustering of functions across
 **FN Layer - Comprehensive Utility Organization**:
 - **Clean Left Focus**: F-keys positioned without utility interference for direct access
 - **Right-Side Clustering**: All utilities logically grouped together for improved muscle memory
-- **Arrow Diamond Pattern**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) arranged in intuitive diamond formation
+- **Dual Arrow Access**: Arrow keys available in both WASD-style (left side) and IJKL-style (right side) positions
 - **Function Clusters**: Navigation utilities (HOME, DELETE, PAGE UP/DOWN, INSERT) grouped together
 - **System Clusters**: PRINT SCREEN, SCROLL LOCK, PAUSE grouped for system functions
 - **Productivity Access**: EMAIL and SAVE macros strategically positioned for workflow efficiency
 
 **Cross-Layer Consistency**:
 - **Symbol Layer**: Numbers on home row with logical symbol grouping for programming efficiency
-- **NAV Layer**: IJKL arrow keys with strategic text editing shortcuts
+- **NAV Layer**: IJKL arrow keys with strategic text editing shortcuts positioned for comfortable navigation
 - **Specialized Layers**: Dedicated media controls and Bluetooth management
 
 **Ergonomic Benefits**:
@@ -256,10 +261,10 @@ The keymap features enhanced logical grouping and clustering of functions across
 
 The enhanced FN layer organization follows intuitive grouping principles:
 
-**Arrow Key Diamond Pattern**:
-- **Natural Formation**: IJKL pattern - I(UP), J(LEFT), K(DOWN), L(RIGHT) positioned in diamond shape matching directional logic
-- **Muscle Memory**: Intuitive finger positioning mirrors physical directional movement
-- **Quick Access**: Clustered together for rapid directional navigation without hand repositioning
+**Dual Arrow Key Access**:
+- **Left Side Navigation**: Arrow keys at WASD positions (W=UP, A=LEFT, S=DOWN, D=RIGHT) for gaming-style navigation
+- **Right Side Navigation**: Arrow keys at IJKL positions (I=UP, J=LEFT, K=DOWN, L=RIGHT) for traditional text editing
+- **Flexible Access**: Both patterns available for user preference and different use cases
 
 **Utility Clustering Strategy**:
 - **Navigation Group**: HOME, DELETE, PAGE UP/DOWN, INSERT positioned together for document navigation
@@ -286,22 +291,32 @@ The keymap prioritizes a pure typing experience with enhanced organizational ben
 
 ### Advanced Behaviors
 
-#### Layer-Tap for Thumb Keys
-- **Left Thumb**: Symbol layer access with space fallback
-- **Right Thumb**: Navigation layer access with space fallback
+#### Mod-Morph Behavior (combo_esc)
+- **ESC Key**: ESC normally, GRAVE (`) when LALT is held
+- **Purpose**: Provides quick access to backtick/grave character for programming
+- **Implementation**: Uses ZMK's mod-morph behavior with LALT modifier detection
+
+#### Layer-Tap Behaviors
+- **Left Thumb (lt_spc)**: Symbol layer access with space fallback
+- **Right Thumb (lt_spc)**: Navigation layer access with space fallback
 - **Optimized Timing**: 175ms hold threshold with 125ms quick-tap for natural typing rhythm
+- **Media Access (lt_mod)**: Hold MOD key for MEDIA layer access
+- **Legacy Support**: 200ms timing with hold-preferred flavor
 
 #### Tap-Dance Capabilities
-- **CAPS Key**: Single tap for FN layer, double tap for CAPS LOCK
+- **CAPS Key (td_caps)**: Single tap activates FN layer, double tap activates CAPS LOCK
 - **Optimized Timing**: 200ms for comfortable double-tap recognition
+- **Dual Purpose**: Efficient layer access and traditional caps lock functionality
 
 #### Sticky Keys
 - **Quick Release**: 1000ms timeout with immediate release on next key
 - **Modifier Ignore**: Prevents interference with typing flow
+- **Behavior**: Maintains modifier state briefly for one-handed combinations
 
 #### Custom Macros
-- **Email Macro**: Quick email address insertion
+- **Email Macro**: Quick email address insertion (example@gmail.com)
 - **Save Macro**: Ctrl+S shortcut for rapid file saving
+- **Implementation**: Uses ZMK's macro system for consistent key sequences
 
 ## Pin Configuration
 
@@ -573,11 +588,28 @@ lt_spc: layer_tap_space {
 };
 ```
 
+**Layer-Tap with Modifier (Media Access)**:
+```c
+lt_mod: layer_tap_with_modifier {
+    tapping-term-ms = <200>;      // Hold threshold
+    quick-tap-ms = <125>;         // Quick tap threshold
+    flavor = "hold-preferred";    // Prefer hold behavior
+};
+```
+
 **Tap-Dance for CAPS/FN Key**:
 ```c
 td_caps: tap_dance_caps {
     tapping-term-ms = <200>;      // Double-tap timing
     bindings = <&mo FN>, <&kp CAPS>;  // Single tap = FN layer, double tap = CAPS
+};
+```
+
+**Mod-Morph for ESC/Grave**:
+```c
+combo_esc: combo_escape {
+    bindings = <&kp ESC>, <&kp GRAVE>;  // ESC normally, GRAVE with LALT
+    mods = <(MOD_LALT)>;                // Trigger on left ALT
 };
 ```
 

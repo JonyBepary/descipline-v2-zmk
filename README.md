@@ -1,4 +1,4 @@
-# ZMK-v2 Firmware for Descipline V2 Keyboard
+# Descipline-v2-zmk Firmware for Descipline V2 Keyboard
 
 A comprehensive ZMK (Zephyr Mechanical Keyboard) firmware implementation for the Descipline V2 65% keyboard, featuring advanced ergonomic optimizations, clean typing experience, and intelligent layer management.
 
@@ -446,11 +446,12 @@ This guide includes:
    ```
 
 ### Building the Firmware
+You can Download from "Actions" tab on the GitHub repository or build it yourself using the following steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/zmk-v2.git
-   cd zmk-v2
+   git clone https://github.com/JonyBepary/descipline-v2-zmk.git
+   cd descipline-v2-zmk
    ```
 
 2. **Build for Nice!Nano v2**:
@@ -709,4 +710,4 @@ For issues and questions:
 
 ---
 
-**Note**: This documentation is for ZMK-v2 firmware specifically designed for the Descipline V2 keyboard with Nice!Nano v2 or nrf promicro controller. This implementation prioritizes clean home row typing without modifiers for an uninterrupted typing experience. For other keyboards or controllers, configuration details may differ.
+**Note**: This documentation is for descipline-v2-zmk firmware specifically designed for the Descipline V2 keyboard with Nice!Nano v2 or nrf promicro controller. This implementation prioritizes clean home row typing without modifiers for an uninterrupted typing experience. For other keyboards or controllers, configuration details may differ.
